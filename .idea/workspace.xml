@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="00bf9909-fc00-4170-9a8e-a553c40f4af7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/admin.html" afterPath="$PROJECT_DIR$/client/admin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/dist/scripts/admin_app.js" afterPath="$PROJECT_DIR$/client/dist/scripts/admin_app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/dist/scripts/index_app.js" afterPath="$PROJECT_DIR$/client/dist/scripts/index_app.js" />
     </list>
     <ignored path="izone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,24 +27,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="admin.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/admin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.90976334" vertical-offset="0" max-vertical-offset="1650">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="-13.163265" vertical-offset="0" max-vertical-offset="1575">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="229" max-vertical-offset="1365">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-              <folding>
-                <marker date="1428303056000" expanded="true" signature="1345:4748" placeholder="..." />
-              </folding>
+            <state vertical-scroll-proportion="-0.2204142" vertical-offset="599" max-vertical-offset="1275">
+              <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,8 +104,8 @@
         <option value="$PROJECT_DIR$/client/resume.html" />
         <option value="$PROJECT_DIR$/client/scripts/index.js" />
         <option value="$PROJECT_DIR$/client/scripts/admin.js" />
-        <option value="$PROJECT_DIR$/client/index.html" />
         <option value="$PROJECT_DIR$/client/admin.html" />
+        <option value="$PROJECT_DIR$/client/index.html" />
       </list>
     </option>
   </component>
@@ -1004,20 +1000,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.html">
+    <entry file="file://$PROJECT_DIR$/client/admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="229" max-vertical-offset="1365">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <marker date="1428303056000" expanded="true" signature="1345:4748" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="-13.163265" vertical-offset="0" max-vertical-offset="1575">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/admin.html">
+    <entry file="file://$PROJECT_DIR$/client/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.90976334" vertical-offset="0" max-vertical-offset="1650">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.2204142" vertical-offset="599" max-vertical-offset="1275">
+          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
           <folding />
         </state>
       </provider>
