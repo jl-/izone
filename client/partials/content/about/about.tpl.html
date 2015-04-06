@@ -1,0 +1,113 @@
+<div class="cover about-page flex-row stretch">
+    <aside class="vcard-panel flex-column center full-column">
+        <div class="pb-extra full-row">
+            <div class="flex-row center mb-extra">
+                <img ng-src="{{aboutCtrl.profile.avatar}}" alt="" class="img-responsive avatar img-circle">
+            </div>
+            <div class="full-row ptb user-metas-box">
+                <h4 class="full-row text-primary text-left mtb text-uppercase flag">about me</h4>
+                <div class="pl-lg">
+                    <p class="text-white"><i class="fa mr-lg fa-fw" ng-class="{'fa-male': aboutCtrl.profile.gender == 'male','fa-female': aboutCtrl.profile.gender == 'female'}"></i>{{aboutCtrl.profile.gender}}</p>
+                    <p class="text-white" ng-if="aboutCtrl.profile.city"><i class="fa fa-map-marker mr-lg fa-fw"></i>{{aboutCtrl.profile.city}}</p>
+                    <p class="text-white" ng-if="aboutCtrl.profile.birth"><i class="fa fa-birthday-cake mr-lg fa-fw"></i>{{aboutCtrl.profile.birth | date: 'fullDate'}}</p>
+                    <span class="label label-primary ptb mr-lg" ng-repeat="character in aboutCtrl.profile.characters">.{{character}}</span>
+                </div>
+            </div>
+            <figure class="quote signature mt-lg" ng-if="aboutCtrl.profile.signature">
+            <blockquote class="curly-quotes" cite="http://www.youtube.com/watch?v=qYLrc9hy0t0">{{aboutCtrl.profile.signature}}</blockquote>
+            <figcaption class="quote-by text-primary" ng-if="aboutCtrl.profile.name">— {{aboutCtrl.profile.name}}</figcaption>
+        </figure>
+    </div>
+    <div class="full-row contact-box mt-extra absolute bottom left">
+        <div class="flex-row between full-row plr-lg">
+            <a href="mailto:{{aboutCtrl.profile.contact.email}}" class="mb-lg" ng-if="aboutCtrl.profile.contact.email"><i class="fa fa-envelope-o mr-lg"></i>{{aboutCtrl.profile.contact.email}}</a>
+            <span class="mb-lg text-primary" ng-if="aboutCtrl.profile.contact.phone"><i class="fa fa-phone mr-lg"></i>{{aboutCtrl.profile.contact.phone}}</span>
+        </div>
+        <div class="flex-row around social">
+            <a ng-href="{{aboutCtrl.profile.contact.gplus}}" class="social-item nudl fa fa-google" ng-if="aboutCtrl.profile.contact.gplus"></a>
+            <a ng-href="{{aboutCtrl.profile.contact.facebook}}" class="social-item nudl fa fa-facebook" ng-if="aboutCtrl.profile.contact.facebook"></a>
+            <a ng-href="{{aboutCtrl.profile.contact.twitter}}" class="social-item nudl fa fa-twitter" ng-if="aboutCtrl.profile.contact.twitter"></a>
+            <a ng-href="{{aboutCtrl.profile.contact.wechat}}" class="social-item nudl fa fa-wechat" ng-if="aboutCtrl.profile.contact.wechat"></a>
+            <a ng-href="{{aboutCtrl.profile.contact.github}}" class="social-item nudl fa fa-github" ng-if="aboutCtrl.profile.contact.github"></a>
+        </div>
+    </div>
+</aside>
+<div class="flex-1 container-auto-y pt-extra about-details-panel full-column">
+    <div class="about-category edu-category" ng-if="aboutCtrl.profile.edu.length > 0">
+        <div class="about-category-title quote-title text-uppercase flex-row center text-white">
+            <div>
+                <!--<h4 class=""><span class="fa fa-angle-left"></span><span class="mlr">education</span></span><span class="fa fa-angle-right"></span></h4>-->
+                <i class="fa fa-2x fa-quote-left"></i><span class="plr-lg">Educations</span><i class="fa fa-2x fa-quote-right"></i>
+            </div>
+        </div>
+        <div class="about-card bg-primary edu-card plr-lg ptb-lg" ng-repeat="edu in aboutCtrl.profile.edu">
+            <div><i class="fa fa-university fa-fw mr"></i>school:&nbsp;&nbsp;{{edu.school}}</div>
+            <div><i class="fa fa-clock-o fa-fw mr"></i>duration:&nbsp;&nbsp;{{edu.startYear}} ~ {{edu.endYear}}</div>
+            <div><i class="fa fa-tint fa-fw mr"></i>major:&nbsp;&nbsp;{{edu.major}}</div>
+            <hr>
+            <div><span class="flag">description</span><p class="pl-extra">{{edu.description}}</p></div>
+        </div>
+    </div>
+    <div class="about-category project-category pt" ng-if="aboutCtrl.profile.projects.length > 0">
+        <div class="about-category-title quote-title text-uppercase flex-row center text-white">
+            <div>
+                <i class="fa fa-2x fa-quote-left"></i><span class="plr-lg">Projects</span><i class="fa fa-2x fa-quote-right"></i>
+            </div>
+        </div>
+        <div class="">
+            <div class="panel panel-primary center-block about-card project-card" ng-repeat="project in aboutCtrl.profile.projects">
+                <div class="panel-heading"><span>{{project.name}}</span></div>
+                <div class="panel-body">
+                    <div>
+                        <span class="flag">Project metas:</span>
+                        <div class="pl-extra">
+                            <div class="mt-lg"><i class="fa fa-flag mr-lg"></i>{{project.title}}</div>
+                            <div ng-if="project.startYear" class="mt-lg"><i class="fa fa-clock-o mr-lg"></i>{{project.startYear}}/{{project.startMonth}} ~ {{project.endYear}}/{{project.endMonth}}</div>
+                            <div ng-if="project.homepage" class="mt-lg"><i class="fa fa-github mr-lg"></i><a ng-href="{{project.homepage}}">{{project.homepage}}</a></div>
+                            <div ng-if="project.duty" class="mt-lg"><i class="fa fa-info-circle mr-lg"></i>{{project.duty}}</div>
+                        </div>
+                    </div>
+                    <hr class="text-primary">
+                    <div ng-if="project.description" class="mt-lg"><span class="flag">Description:</span><p class="pl-extra text-primary">{{project.description}}</p></div>
+                    <div ng-if="project.skills.length > 0">
+                        <span class="flag">skills needed:</span>
+                        <div class="flex-row start pl-extra">
+                            <a class="nudl mr-lg" ng-repeat="skill in project.skills"><code>#{{skill}}</code></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-category experience-category" ng-if="aboutCtrl.profile.experiences.length > 0">
+        <div class="about-category-title quote-title text-uppercase flex-row center text-white">
+            <div>
+                <!--<h4 class=""><span class="fa fa-angle-left"></span><span class="mlr">education</span></span><span class="fa fa-angle-right"></span></h4>-->
+                <i class="fa fa-2x fa-quote-left"></i><span class="plr-lg">Experiences</span><i class="fa fa-2x fa-quote-right"></i>
+            </div>
+        </div>
+        <div class="about-card bg-primary experience-card plr-lg ptb-lg" ng-repeat="experience in aboutCtrl.profile.experiences">
+            <div><i class="fa fa-home fa-fw mr"></i>company:<a class="text-white" href="{{experience.homepagy}}">&nbsp;&nbsp;{{experience.company}}</a></div>
+            <div><i class="fa fa-clock-o fa-fw mr"></i>duration:&nbsp;&nbsp;{{experience.startYear + '/' + experience.startMonth}} ~ {{experience.endYear + '/' + experience.endMonth}}</div>
+            <div><i class="fa fa-tint fa-fw mr"></i>duty:&nbsp;&nbsp;{{experience.duty}}</div>
+            <hr>
+            <div><span class="flag">description</span><p class="pl-extra">{{experience.description}}</p></div>
+        </div>
+    </div>
+    <div class="about-category skill-category" ng-if="aboutCtrl.profile.skills.length > 0">
+        <div class="about-category-title quote-title text-uppercase flex-row center text-white">
+            <div>
+                <i class="fa fa-2x fa-quote-left"></i><span class="plr-lg">Skills</span><i class="fa fa-2x fa-quote-right"></i>
+            </div>
+        </div>
+        <div class="about-card skill-card pb-lg">
+            <div ng-repeat="skill in aboutCtrl.profile.skills" class="skill-item ptb-lg plr mb-lg about-card flag">
+                <div class="">skill:&nbsp;&nbsp;<code>{{skill.name}}</code></div>
+                <div class="">state:&nbsp;&nbsp;<span  class="text-primary">{{skill.state}}</span></div>
+                <hr class="text-primary">
+                <div class=""><span class="flag">description</span><p class="pl-extra text-primary">{{skill.description}}</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

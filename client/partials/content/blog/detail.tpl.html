@@ -1,0 +1,29 @@
+<div class="post-detail cover container-auto-y absolute top left plr-extra ptb-extra" ng-class="{active: blogCtrl.status.readingPost}">
+    <a ui-sref="blog.list" class="text-primary" ng-click="contentCtrl.status.isArchivePanelHidden = false"><i class="fa fa-angle-left mr-lg"></i>Go back to posts list</a>
+    <div class="post mt-lg">
+        <h2 class="post-title">{{blogDetailCtrl.post.title}}</h2>
+        <div class="post-metas-box plr-lg">
+            <span class="post-date"><i class="fa fa-clock-o mr"></i>{{blogDetailCtrl.post.createdAt | date: "fullDate"}}</span>
+            <span class="post-category">{{blogDetailCtrl.post.category}}</span>
+        </div>
+        <div class="plr ptb">
+            <markdown-highlight md="blogDetailCtrl.post.content" class="post-content" read-more="false"></markdown-highlight>
+        </div>
+        <div ng-if="blogDetailCtrl.post.tags.length > 0">
+            <div class="bg-primary post-tags-wrapper">
+                <span class="mlr post-tag" ng-repeat="tag in blogDetailCtrl.post.tags">#{{tag}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="post-comment plr-lg ptb-lg mb-extra">
+
+        <!-- deployment config 
+            set your own disqus app :disqus-shortname="disqusShortName"
+        -->
+        <dir-disqus disqus-shortname="i-zone"
+        disqus-identifier="{{blogDetailCtrl.post._id}}"
+        disqus-url="{{blogDetailCtrl.domain + '/posts/' + blogDetailCtrl.post._id}}">
+        </dir-disqus>
+        <!-- end of deployment config -->
+    </div>
+</div>

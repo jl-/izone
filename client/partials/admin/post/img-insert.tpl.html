@@ -1,0 +1,12 @@
+<div class="flex-column post-upload-img-panel stretch">
+    <div class="bg-true-blue flex-row">
+        <qiniu-upload class="flex-1" uploader="postCtrl.uploader" handle="post-img" opts="postCtrl.uploaderOpts"></qiniu-upload>
+        <button class="btn btn-primary mlr" ng-click="postCtrl.cancelUploadPostImg()">cancel</button>
+        <button class="btn btn-primary mlr" ng-click="postCtrl.uploadPostImg()">upload</button>
+    </div>
+    <div class="flex-1">
+        <div class="full-row pt-lg pb plr" ng-repeat="file in postCtrl.uploader.files">
+            <img-thumb class="" file="file"></img-thumb>
+        </div>
+    </div>
+</div>

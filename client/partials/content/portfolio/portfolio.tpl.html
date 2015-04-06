@@ -1,0 +1,29 @@
+<div class="portfolio-page cover container-clip-x container-auto-y">
+    
+    <div class="full-row relative container-clip" ng-if="portfolioCtrl.portfolios.length >0">
+        <div class="portfolio-group-heading flex-column center">
+            <div class="text-center text-primary portfolio-group-title flex-row center first"><span>Desing</span><i class="fa fa-paint-brush mlr-lg text-primary"></i><span>Portfolio</span></div>
+            <div class="portfolio-group-description flex-row center text-white">
+                <span class="label label-primary ptb plr">IOS</span>
+                <span class="label label-primary ml-lg ptb plr">Web</span>
+                <span class="label label-primary ml-lg ptb plr">Wallpaper</span>
+                <span class="label label-primary ml-lg ptb plr">......</span>
+            </div>
+        </div>
+        <div class="full-row flex-row start portfolio-items-container">
+            <div class="portfolio-item relative" ng-repeat="portfolio in portfolioCtrl.portfolios" ng-click="portfolioCtrl.viewItem(portfolio)">
+                <img ng-src="{{portfolio.src}}" alt="" class="portfolio-img" ng-click="portfolioCtrl.viewPortfolio(portfolio)">
+                <div class="portfolio-item-metas cover absolute top left flex-column center">
+                    <h4 class="portfolio-item-title">{{portfolio.title}}</h4>
+                    <a ng-href="{{portfolio.link}}" class="portfolio-item-link"><i class="fa fa-arrow-right"></i></a>
+                    <h4 class="portfolio-item-description">{{portfolio.description}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lightbox cover absolute top left" ng-class="{bounceFarIn: portfolioCtrl.status.viewingItem}" ng-click="portfolioCtrl.status.viewingItem=false;">
+        <div class="portfolio cover container-auto">
+            <img class="portfolio-img" ng-src="{{portfolioCtrl.item.img}}" alt="">
+        </div>
+    </div>
+</div>

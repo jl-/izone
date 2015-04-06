@@ -1,0 +1,410 @@
+/* auth page
+====================*/
+.auth-form{
+    max-width: 100%;
+    width: 420px;
+    @extend .plr;
+    margin-top: 120px;
+    .input-group{
+        @extend .mb-lg;
+    }
+}
+
+a{}
+
+
+/* admin
+====================*/
+.actionbar-holder{
+    height: $actionbar-height;
+}
+.drawer{
+    position: relative;
+    width: $drawer-width;
+    background-color: bgc($color-schema);
+}
+.fragment-container{
+    @extend .flex-1;
+}
+
+
+/* post page
+================================*/
+.tags-wrapper.item{
+  display: flex;
+}
+.tag-input{
+    line-height: normal;
+    width: 80px;
+}
+.post-control-panel{
+    position: relative; 
+}
+.categories-list-panel,.preview{
+    background-color: darken(bgc($color-schema),2%);
+}
+.posts-list-panel,.preview{
+    @extend .container-auto;
+    transition: transform 0.3s ease,opacity 0.3s ease;
+    opacity: 0;
+    transform:scale(0);
+    background-color: darken(bgc($color-schema),2%);
+    &.active{
+        transform: scale(1);
+        opacity: 1;
+    }
+    .body .nav-item.active{
+        background-color: darken(bgc($color-schema),3%);
+    }
+}
+.preview{
+    color: c($color-schema);
+}
+.book{
+    input{
+       width: calc(100% - 8px);
+       @extend .white;
+    }
+}
+.editor-panel{
+    background-color: darken(bgc($color-schema),3%);
+    color: c($color-schema);
+}
+.post-upload-img-panel{
+  width: 600px;
+  min-width: 320px;
+  max-width: 98%;
+}
+
+@media screen and (max-width: 760px){
+   .post-fragment{
+        display: block;
+        overflow: auto;
+   } 
+}
+@media screen and (max-width: 560px){
+    .actionbar{ 
+        .tags-wrapper,.tag-input-wrapper{
+            display:none !important;
+        }
+    }
+    .drawer{
+        position: fixed;
+        &:not(.ng-hide){
+            z-index: 5;
+        }
+    }
+}
+
+
+/* setting page
+================================================*/
+.setting-fragment{
+    position: relative;
+}
+.setting-menu-bar{
+    height: 80px;
+    border-bottom: 1px dashed c($color-schema);
+}
+.menu-item{
+    @extend .circle;
+    @include size(36px);
+    font-size: 16px;
+    line-height: 36px;
+    transition: all 0.3s ease;
+    background-color: bgc($color-schema);
+    box-shadow: 0 0 8px darken(bgc($color-schema),8%);
+    &.active{
+        background: white;
+        box-shadow: 0 0 8px #fafafa;
+        transform: scale(1.2);
+    }
+}
+.setting-detail{
+    height: calc(100% - 80px);
+    color: $true-blue;
+    overflow: auto;
+    .form-control{
+        color: $true-blue;
+        border-color: $true-blue;
+    }
+    .input-group-addon{
+        border: none;
+        color: white;
+        background: $true-blue;
+    }
+}
+/*  basis panel */
+.basis-panel{
+    
+}
+.basis-panel > div:nth-of-type(2){
+    border-left: 1px dashed $true-blue;
+}
+.avatar-btn-wrapper{
+    .avatar-btn{
+        @extend .scale;
+    }
+    &:hover{
+        background-color: rgba(0,0,0,0.5);
+        .avatar-btn{
+            @extend .scale.active;
+        }
+    }
+}
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  max-width: 98%;
+  width:500px;
+  height:350px;
+}
+.avatar-setting-panel{
+    .modal-header{
+        @extend .plr;
+        @extend .ptb;
+    }
+}
+.avatar-preview{
+    @include size(100px);
+}
+#avatar-selector-input{
+    display: none;
+    & + label{
+        border: 1px dashed #ccc;
+        border-radius: 4px;
+        @extend .plr-extra;
+        @extend .ptb;
+    }
+}
+@media screen and (max-width: 860px){
+    .modal-body{
+        flex-direction: column;
+    }
+}
+
+/* skills panel */
+.skills-nav{
+    border-left: 1px dashed;
+}
+.skill-card{
+    max-width: 100%;
+    width: 400px;
+}
+.skill-card-header{
+   font-size: 26px; 
+   border-bottom: 1px dashed;
+}
+
+/* education panel */
+.new-edu{
+    margin-left: 44px;
+}
+.timeline-bar{
+   .timeline-metas{
+       position: relative;
+       padding-top: 30px;
+        &::before{
+            content: "";
+            @extend .absolute;
+            width: 2px;
+            height: calc(100% - 15px);
+            top: -3px;
+            left: 55px;
+            background-color: $true-blue;
+        }
+        .circle-link{
+            @include size(18px);
+           cursor: pointer;
+            line-height: 18px;
+        }
+        &.active{
+           .circle-link{
+                transform: scale(1.2);
+                background-color: white;
+           } 
+        }
+   } 
+}
+.edu-content{
+    .edu-edit-panel{
+        & > div{
+            max-width: 100%;
+            width: 400px;
+        }
+    }
+    .edu-card{
+        position: relative;
+        max-width: 100%;
+        width: 600px;
+        background-color: darken(bgc($color-schema),8%);
+    }
+}
+
+/* experience panel */
+.experience-card{
+  max-width: 98%;
+  width: 800px;
+}
+.experience-editor-wrapper{
+  overflow: auto;
+  background-color: bgc($color-schema);
+  .experience-editor{
+    max-width: 98%;
+    width: 680px;
+    .half{
+      width: calc(50% - 12px) ;
+    }
+  }
+}
+/* project panel */
+.project-card{
+  @extend .experience-card;
+}
+.project-editor-wrapper{
+    overflow: auto;
+    background-color: bgc($color-schema);
+    .project-editor{
+        max-width: 98%;
+        width: 680px;
+        .half{
+            width: calc(50% - 12px) ;
+        }
+    }
+}
+/*  contact  */
+.vcard{
+    max-width: 100%;
+    width: 400px;
+}
+@media screen and (max-width: 760px){
+    .setting-menu-bar{
+        .menu-item{
+            @include size(36px);
+            line-height: 36px;
+        }
+    }
+    .basis-info-box{
+        display: block;
+        & > div{
+            height: auto;
+        }
+
+        & > div:nth-of-type(2){
+            flex: 2;
+            border-left: none;
+            margin-top: 20px;
+            border-top: 1px dashed $true-blue;
+        }
+    }
+    .skill-panel{
+        .skill-detail{
+            flex: 2;
+        }
+        .skills-nav{
+            flex: 1;
+        }
+    }
+}
+@media screen and (max-width: 560px){
+}
+
+
+
+/* portfolio fragment
+===========================================*/
+.portfolio-fragment{
+    color: c($color-schema);
+}
+.portfolio-item{
+    border: 3px solid #efefef;
+    border-radius: 4px;
+    margin-bottom: 36px;
+    @include size(300px,240px);
+    @extend .container-clip;
+    &:hover{
+        .portfolio-img{
+            transform: scale(1.06) translateX(0);
+            opacity: 0.9;
+        }
+        & > .portfolio-item-metas{
+            opacity: 1;
+            & > .portfolio-item-action-wrapper{
+                transform: translateX(-100%);
+            }
+        }
+    }
+}
+.portfolio-img{
+    min-width: 320px;
+    min-height: 240px;
+    width: 320px;
+    transform: translateX(-20px);
+    transition: transform 1.2s ease,opacity 0.3s ease;
+}
+.portfolio-item-metas{
+    opacity: 0;
+    background-color: rgba(0,0,0,0.4);
+    transition: opacity 0.6s ease;
+    @extend .container-clip;
+    & > .portfolio-item-action-wrapper{
+        @extend .absolute;
+        @extend .top;
+        left: 100%;
+        transition: transform 0.3s ease,opacity 0.3s ease;
+    }
+    &.dark{
+        background-color: rgba(0,0,0,0.8);
+    }
+    .bare-input{
+        width: 76%;
+    }
+}
+.portfolio-upload-item{
+    &:nth-child(odd){
+        background-color: #eee;
+    }
+    input.form-control{
+        height: 26px;
+    }
+}
+.portfolio-upload-item-preview{
+
+}
+.qiniu-upload-btn-wrapper{
+  @extend .flex-row;
+  @extend .center;
+  @extend .ptb;
+  background-color: $true-blue;
+}
+.qiniu-upload-btn{
+  @extend .plr-lg;
+  @extend .ptb;
+  @extend .transparent;
+  @extend .text-white;
+  border: 1px dashed white;
+
+}
+.form-control{
+    line-height: normal;
+}
+#portfolio-file-input{
+    display: none;
+    & + label{
+        border: 1px dashed white;
+        border-radius: 4px;
+        @extend .plr-extra;
+        @extend .ptb;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .portfolio-upload-item{
+        display: block;
+        & >  div{
+            width: 100%;
+            max-width: 100% !important;
+        }
+    }
+    
+}

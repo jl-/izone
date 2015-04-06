@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>resume</title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+        <!--<link rel="stylesheet" href="bower_components/normalize.css/normalize.css">-->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/normalize/3.0.1/normalize.min.css">
+
+        <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <!--<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+        <!--<link rel="stylesheet" href="styles/resume.css">-->
+        <link rel="stylesheet" href="http://i-zone.qiniudn.com/styles/resume.css">
+    </head>
+    <body class="bg-info container-clip-x container-auto-y freeze">
+        <!-- preface -->
+        <div class="preface cover flex-column relative around container-clip">
+            <a class="fa fa-angle-down absolute text-white pointer nudl" id="preface-to-about" href=""></a>
+            <svg id="preface-svg" class="cover absolute top left" viewBox="0,0,1000,600" preserveAspectRatio="xMidYMid slice"></svg>
+        </div>
+        <!-- end: preface -->
+
+        <!-- about -->
+        <div class="cover about relative flex-column parallax center container-clip-x">
+            <a class="fa fa-leaf text-white social-link" id="blog-link" href="http://jlxy.cz"></a>
+            <div class="about-details">
+                <div class="ptb-extra flex-column center">
+                    <img src="" alt="" class="avatar img-circle">
+                    <div class="flex-row center">
+                        <h5 class=""><i class="fa fa-at fa-fw"></i><span class="name"></span></h5>
+                        <h5 class="ml-extra"><i class="fa fa-map-marker fa-fw"></i><span class="location"></span></h5>
+                    </div>
+                </div>
+                <blockquote class="curly-quotes signature" cite="http://www.youtube.com/watch?v=qYLrc9hy0t0"></blockquote>
+            </div>
+            <div class="mt flex-row center social-links">
+                <a href="http://cn.linkedin.com/in/jlxycz/" class="fa fa-linkedin social-link nudl"></a>
+                <a href="https://www.facebook.com/i.dragonxx" class="fa fa-facebook social-link nudl"></a>
+                <a href="https://twitter.com/jlxycz" class="fa fa-2x fa-twitter social-link nudl"></a>
+                <a href="https://www.google.com/+jlxycz" class="fa fa-2x fa-google-plus social-link nudl"></a>
+            </div>
+            <!--<svg id="about-svg" class="cover absolute top left"></svg>-->
+        </div>
+        <!-- end: about -->
+
+        <!-- skills -->
+        <div class="full-row skills stretch relative container-clip-x flex-row center">
+            <div class="skill-items"></div>
+            <div class="flex-column center w-4 plr-extra ptb-extra skills-intro">
+                <div class="flex-row center"><h2>Skills</h2><i class="fa fa-circle fa-fw mlr-lg"></i><h2>Tools</h2></div>
+                <blockquote class="curly-quotes" cite="http://www.youtube.com/watch?v=qYLrc9hy0t0">I'm always eager to learn new skills, and along the path I've mastered some basic programming skills, yet the most significant one is learning how to learn</blockquote>
+                <div class="flex-row center">
+                    <i class="fa fa-fw fa-2x fa-html5 mlr-extra"></i>
+                    <i class="fa fa-fw fa-2x fa-css3 mlr-extra"></i>
+                    <i class="fa fa-fw fa-2x fa-git mlr-extra"></i>
+                </div>
+            </div>
+        </div>
+        <!-- end  -->
+
+        <!-- portfolio -->
+        <div class="full-row ptb-extra portfolio flex-column center container-clip-x">
+            <h1>Portfolio</h1>
+            <div>
+                <span class="label portfolio-label mlr-lg">Web</span>
+                <span class="label portfolio-label mlr-lg">IOS</span>
+                <span class="label portfolio-label mlr-lg">Wallpaper</span>
+                <span class="label portfolio-label mlr-lg">......</span>
+            </div>
+            <div class="portfolio-box flex-row center">
+            </div>
+        </div>
+        <!-- end -->
+
+        <!-- -->
+        <!--<div class="cover ptb-extra relative motto flex-column center">-->
+            <!--<div class="motto-detail">-->
+                <!--<h3 class="text-center">Pixel Revolution</h3>-->
+            <!--</div>-->
+            <!--<svg id="motto-svg" class="absolute cover left top" viewBox="0,0,1000,600" preserveAspectRatio="xMidYMid slice"></svg>-->
+        <!--</div>-->
+        <!-- end -->
+
+        <!-- device -->
+        <div class="cover relative web">
+            <svg id="web-svg" class="absolute cover left top" viewBox="0,0,1000,600" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <!-- end -->
+        <!-- contact -->
+        <div class="contact parallax cover relative flex-column center container-clip-x">
+
+            <!--<blockquote class="curly-quotes h2" cite="http://www.youtube.com/watch?v=qYLrc9hy0t0">Offer me a Front End Internship..</blockquote>-->
+            <!--<h3 class="mtb">OR</h3>-->
+            <!--<a href="mailto:i.dragonxx@gmail.com" class="text-white flat-btn h3 mb-extra nudl mt-sm">Reach me</a>-->
+
+            <a href="mailto:i.dragonxx@gmail.com" class="text-white mail-btn flat-btn h3 mb-extra nudl mt-sm">Let's Talk..</a>
+
+        </div>
+        <!-- end -->
+
+
+        <!--<script src="bower_components/requirejs/require.js" data-main="scripts/resume"></script>-->
+
+
+        <!-- baidu requirejs cdn -->
+        <script src="http://cdn.bootcss.com/require.js/2.1.15/require.min.js" data-main="scripts/resume"></script>
+
+        <script>
+            window.addEventListener('beforeunload',function(){
+                window.scrollTo(0,0);
+            });
+        </script>
+
+    </body>
+</html>

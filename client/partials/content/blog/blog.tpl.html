@@ -1,0 +1,53 @@
+<div class="cover blog-page container-clip flex-row stretch">
+    <div class="archive-panel full-column" ng-class="{inactive: contentCtrl.status.isArchivePanelHidden}">
+        <div class="actionbar">
+            <a href="" class="item fa fa-minus nudl" ng-click="contentCtrl.status.isArchivePanelHidden = true"></a>
+            <span class="text-primary">{{blogCtrl.status.postsViewType}}</span>
+            
+            <span class="dropdown item pull-right" dropdown-toggle>
+            <a href  class="fa fa-exchange">
+                
+            </a>
+            <ul class="dropdown-menu">
+                <li ng-click="blogCtrl.changePostsViewType('categories')"><a href="">Categories</a></li>
+                <li ng-click="blogCtrl.changePostsViewType('archive')"><a href="">Archive</a></li>
+                <li ng-click="blogCtrl.changePostsViewType('all')"><a href="">All</a></li>
+            </ul>
+            </span>
+        </div>
+        <div class="body plr">
+            <div ng-switch on="blogCtrl.status.postsViewType">
+                <div ng-switch-when="archive">
+                    <accordion>
+                        <accordion-group ng-repeat="archive in blogCtrl.archives">
+                        <accordion-heading><i class="fa fa-clock-o"></i>&nbsp;&nbsp;{{archive.title}} <span class="ml-lg badge pull-right">{{archive.posts.length}}</span></accordion-heading>
+                        <a href="" class="item plr ptb" ui-sref="blog.detail({categoryName:post.category,postId:post._id})" ng-repeat="post in archive.posts"><span class="mr-lg"><i class="fa fa-file-text-o"></i></span>{{post.title}}</a>
+                    </accordion-group>
+                </accordion>
+            </div>
+            <div ng-switch-when="all" class="nav-group-v">
+                        <a href="" class="nav-item plr bb ptb" ui-sref="blog.detail({categoryName:post.category,postId:post._id})" ng-repeat="post in blogCtrl.sortedPosts"><span class="mr-lg"><i class="fa fa-file-text-o"></i></span>{{post.title}}</a>
+            </div>
+            <div ng-switch-default class="flex-row around">
+                <div class="book flex-column center" ng-repeat="category in blogCtrl.categories" ng-click="blogCtrl.setCurrentCategory(category._id)">
+                    <span>{{category.name}}</span>
+                    <span>{{category.posts.length}}&nbsp;&nbsp;posts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category-panel absolute top bottom full" ng-class="{active: blogCtrl.status.viewingPosts}">
+        <div class="actionbar absolute top full">
+            <a href="" class="item fa fa-chevron-left" ng-click="blogCtrl.status.viewingPosts=false"></a>
+            <a href="" class="item">{{blogCtrl.currentCategory.name}}</a>
+        </div>
+        <div class="nav-group-v body">
+            <div class="nav-item" ng-repeat="post in blogCtrl.currentCategory.posts" ng-class="{active: blogCtrl.isCurrentPost($index)}">
+                <a ui-sref="blog.detail({categoryName:post.category,postId:post._id})"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;{{post.title}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="post-panel flex-1 container-clip full-column slide" ui-view>
+</div>
+</div>

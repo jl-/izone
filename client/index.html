@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title ng-bind="title"></title>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+        <!--<link rel="stylesheet" href="bower_components/normalize.css/normalize.css">-->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/normalize/3.0.1/normalize.min.css">
+
+        <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+        <!--<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+
+        <!--<link rel="stylesheet" href="bower_components/highlightjs/styles/solarized_dark.css">-->
+        <link rel="stylesheet" href="http://i-zone.qiniudn.com/bower_components/highlightjs/styles/solarized_dark.css">
+
+        <!--<link rel="stylesheet" href="styles/index.css">-->
+        <link rel="stylesheet" href="http://i-zone.qiniudn.com/styles/index.css">
+    </head>
+    <body class="container-clip" ng-controller="ContentController as contentCtrl">
+        <div class="page-wrapper cover flex-row container-clip stretch">
+            <aside class="menu-bar relative full-column">
+                <nav class="nav-group-v">
+                    <a ui-sref="blog.list" tooltip="blog" tooltip-placement="right" class="nav-item" ui-sref-active="active" ng-click="contentCtrl.toggleArchievePanel()"><i class="fa fa-fw fa-file-text"></i></a>
+                    <a ui-sref="portfolio" ui-sref-active="active" tooltip="portfolio" tooltip-placement="right" class="nav-item"><i class="fa fa-fw fa-desktop"></i></a>
+                    <a ui-sref="user" ui-sref-active="active"  tooltip="about" tooltip-placement="right" class="nav-item"><i class="fa fa-fw fa-user"></i></a>
+                    <a href="./resume.html" tooltip="resume" tooltip-placement="right" class="nav-item"><i class="fa fa-fw fa-leaf"></i></a>
+                    <a href="http://book.jlxy.cz" tooltip="gitbook" tooltip-placement="right" class="nav-item"><i class="fa fa-fw fa-book"></i></a>
+                </nav>
+                <a href="https://github.com/jl-/izone.git" class="nav-item absolute bottom" tooltip="source code" tooltip-placement="right"><i class="fa fa-fw fa-github"></i></a>
+            </aside>
+            <main class="content container-clip flex-1 slide full-column" ui-view></main>
+        </div>
+
+        <!-- raw -->
+        <!-- build:js dist/scripts/index_lib.js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+
+        <script src="bower_components/marked/lib/marked.js"></script>
+        <script src="bower_components/highlightjs/highlight.pack.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js dist/scripts/index_app.js -->
+        <script src="scripts/configs/AppConfig.js"></script>
+        <script src="scripts/index.js"></script>
+
+        <script src="scripts/utils/UtilsModule.js"></script>
+        <script src="scripts/utils/NotificationService.js"></script>
+        <script src="scripts/utils/MdhlDirective.js"></script>
+        <script src="scripts/utils/DisqusDirective.js"></script>
+
+        <script src="scripts/resources/ResourceModule.js"></script>
+        <script src="scripts/resources/Profile.js"></script>
+        <script src="scripts/resources/Category.js"></script>
+        <script src="scripts/resources/Post.js"></script>
+        <script src="scripts/resources/Portfolio.js"></script>
+
+        <script src="scripts/content/ContentController.js"></script>
+
+        <script src="scripts/content/blog/BlogController.js"></script>
+        <script src="scripts/content/blog/BlogDetailController.js"></script>
+
+        <script src="scripts/content/about/AboutController.js"></script>
+        <script src="scripts/content/portfolio/PortfolioController.js"></script>
+        <!-- endbuild -->
+        <!-- end raw -->
+
+
+        <!-- cdn -->
+        <!--<script src="http://i-zone.qiniudn.com/dist/scripts/index_lib.js"></script>-->
+        <!--<script src="http://i-zone.qiniudn.com/dist/scripts/index_app.js"></script>-->
+        <!-- end cdn -->
+
+
+        <!--
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+
+        <script src="bower_components/marked/lib/marked.js"></script>
+        <script src="bower_components/highlightjs/highlight.pack.js"></script>
+
+        <script src="scripts/configs/AppConfig.js"></script>
+        <script src="scripts/index.js"></script>
+
+        <script src="scripts/utils/UtilsModule.js"></script>
+        <script src="scripts/utils/NotificationService.js"></script>
+        <script src="scripts/utils/MdhlDirective.js"></script>
+        <script src="scripts/utils/DisqusDirective.js"></script>
+
+        <script src="scripts/resources/ResourceModule.js"></script>
+        <script src="scripts/resources/Profile.js"></script>
+        <script src="scripts/resources/Category.js"></script>
+        <script src="scripts/resources/Post.js"></script>
+        <script src="scripts/resources/Portfolio.js"></script>
+
+        <script src="scripts/content/ContentController.js"></script>
+
+        <script src="scripts/content/blog/BlogController.js"></script>
+        <script src="scripts/content/blog/BlogDetailController.js"></script>
+
+        <script src="scripts/content/about/AboutController.js"></script>
+        <script src="scripts/content/portfolio/PortfolioController.js"></script>
+        -->
+
+    </body>
+</html>

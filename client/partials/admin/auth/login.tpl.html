@@ -1,0 +1,20 @@
+<div class="cover">
+    <div class="actionbar flex-row center">
+        <a class="nudl text-center action brand">iZone</a>
+    </div>
+    <form name="loginForm" class="auth-form center-block" ng-class="{wobble: authCtrl.error}" ng-submit="authCtrl.login(authCtrl.account)" novalidate>
+        <div class="input-group">
+            <label class="input-group-addon" for="username"><i class="glyphicon glyphicon-user"></i></label>
+            <input type="email" id="email" class="form-control" ng-model="authCtrl.account.email" ng-change="authCtrl.dismissError()" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+            <label for="password" class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></label>
+            <input type="password" id="password" class="form-control" ng-model="authCtrl.account.password" ng-change="authCtrl.dismissError()" placeholder="Password" required>
+        </div>
+        <div class="alert alert-danger" ng-show="authCtrl.error">{{authCtrl.error}}</div>
+        <button class="btn btn-primary btn-lg btn-block" ng-disabled="loginForm.$invalid || authCtrl.status.processing || authCtrl.error">Login&nbsp;&nbsp;<span class="fa fa-spin fa-spinner" ng-if="authCtrl.status.processing"></span></button>
+    </form>
+    <footer class="site-footer flex-row center fixed bottom full">
+        <a href="" class="fa fa-github brand"></a>
+    </footer>
+</div>

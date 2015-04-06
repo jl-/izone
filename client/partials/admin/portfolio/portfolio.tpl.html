@@ -1,0 +1,61 @@
+<div class="cover portfolio-fragment container-clip">
+    <div class="cover portfolio-fragment container-clip-x container-auto-y">
+        <div class="flex-row around">
+            <div class="portfolio-item mr mtb relative" ng-repeat="portfolio in portfolioCtrl.portfolios">
+                <img ng-src="{{portfolio.src}}" alt="" class="portfolio-img">
+                <div class="portfolio-item-metas cover absolute top left flex-column center" ng-class="{dark: portfolio.status.editing}">
+                    <div class="portfolio-item-action-wrapper flex-column around full-column">
+                        <a href="" class="fa-stack fa-lg" ng-click="portfolioCtrl.editPortfolioItem(portfolio,$index)">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-stack-1x fa-edit text-white"></i>
+                        </a>
+                        <a href="" class="fa-stack fa-lg" ng-click="portfolioCtrl.deletePortfolioItem(portfolio,$index)">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-stack-1x fa-trash-o text-white"></i>
+                        </a>
+                    </div>
+                    <a ng-href="{{portfolio.link}}" class="portfolio-item-link text-white" ng-if="!portfolio.status.editing">VISIT</a>
+                    <input type="url" ng-model="portfolio.link" class="bare-input text-center mtb-lg text-white" placeholder="link" ng-if="portfolio.status.editing"/>
+                    <input type="text" ng-model="portfolio.title" class="bare-input text-center mtb-lg text-white" placeholder="title" ng-disabled="!portfolio.status.editing"/>
+                    <input type="text" ng-model="portfolio.description" class="bare-input text-center text-white" placeholder="description" ng-disabled="!portfolio.status.editing"/>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- add portfolio panel -->
+    <div class="cover portfolio-fragment container-clip-x container-auto-y absolute top left scale bg-white" ng-class="{active: portfolioCtrl.status.adding}">
+
+        <div class="bg-true-blue flex-row">
+            <qiniu-upload class="flex-1" handle="profile-upload" uploader="portfolioCtrl.uploader" opts="portfolioCtrl.uploaderOpts"></qiniu-upload>
+            <button class="btn btn-primary" ng-click="portfolioCtrl.upload()">upload</button>
+        </div>
+
+        <div class="portfolio-upload-item flex-row start items-start full-row pt-lg pb plr" ng-repeat="file in portfolioCtrl.uploader.files">
+            <div class="flex-1 plr">
+                <img-thumb class="portfolio-upload-item-preview" file="file"></img-thumb>
+            </div>
+
+
+            <div class="plr w-3">
+                <input type="text" class="form-control mt-lg" placeholder="title" ng-model="file.metas.title">
+                <input type="url" class="form-control mtb-lg" placeholder="link" ng-model="file.metas.link">
+                <textarea rows="6" class="form-control mt" placeholder="description" ng-model="file.metas.description"></textarea>
+                <div class="progress mt-lg mb-0">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': file.percent + '%' }"></div>
+                </div>
+                <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                <div class="flex-row mt-lg">
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="portfolioCtrl.removeFile(file)">
+                    <span class="glyphicon glyphicon-trash"></span> Remove
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

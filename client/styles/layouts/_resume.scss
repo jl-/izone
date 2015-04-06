@@ -1,0 +1,304 @@
+body{
+    color: white;
+//    background: linear-gradient(rgb(37, 118, 104),rgb(19, 46, 62)) fixed;
+//    background: linear-gradient(#090B0D, #132e3e) fixed;
+  background: rgb(4, 14, 26) url("../images/dots7.png") fixed;
+  background-size: cover;
+    &.freeze{
+      @extend .container-clip-y;
+    }
+}
+.parallax{
+  background: no-repeat fixed;
+  @extend .container-clip;
+}
+.brand{
+    font-size: 80px;
+}
+
+/* preface
+========================================*/
+@keyframes gradientTransition {
+  0%{
+    background-color: rgb(147,186,221);
+  }
+  36%{
+    background-color: rgb(130, 168, 219);
+  }
+  72%{
+    background-color: rgb(83, 186, 146);
+  }
+  100%{
+    background-color: rgb(64, 144, 141);
+  }
+}
+#blog-link{
+  position: absolute;
+  border: none;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: 10px 20px;
+  z-index: 100;
+  font-size: 26px;
+  &:hover{
+    &::after{
+      opacity: 1;
+    }
+  }
+  &::after{
+    opacity: 0;
+  }
+  &.fixed{
+      position: fixed;
+      top: 0;
+  }
+}
+.preface{
+    background-color: rgb(1,4,4);
+  background: linear-gradient(rgb(37, 118, 104),rgb(19, 46, 62));
+    & .code-right{
+      margin-left: -20px;
+    }
+}
+.preface-intro{
+  z-index: 1;
+}
+@media only screen and (min-width:960px){
+    .preface{
+    }
+    body{
+    }
+    .contact{
+    }
+    .about{
+      background-image: url("../images/about.png");
+    }
+}
+.keyboard{
+    @extend .absolute;
+    width: 360px;
+    display: block;
+    transition: transform 0.3s ease;
+    bottom: 100px;
+    left: 100px;
+    &.ani{
+        transform: perspective(1000px) rotateX(20deg) rotateY(10deg) rotateZ(20deg);
+    }
+}
+@media only screen and (min-width: 520px){
+    .keyboard{
+        content: url("../images/keyboard.png");
+    }
+}
+@media screen and (max-width: 519px){
+    .keyboard{
+        display: none;
+    }
+}
+.browser{
+    width: 240px;
+}
+.brief{
+    @extend .absolute;
+    opacity: 0;
+    right: 46px;
+    bottom: 100px;
+    h1{
+        font-size: 48px;
+    }
+    p{
+        font-size: 26px;
+    }
+    &.bounceInRight{
+        opacity: 1;
+    }
+}
+@media screen and (max-width: 520px){
+    .brief{
+        right: 0px;
+        width: 100%;
+    }
+}
+
+#preface-to-about{
+    bottom: 20px;
+    width: 30px;
+    font-size: 30px;
+    z-index: 2;
+    left: 50%;
+    margin-left: -12px;
+    font-weight: bolder;
+    display: none;
+}
+
+/* about
+=============================*/
+.about{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.about-details{
+}
+.avatar{
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.signature{
+    max-width: 600px;
+}
+
+/* skills
+================================*/
+.skills{
+}
+.skill-items{
+    display: none;
+}
+.skill{
+    @extend .flex-row;
+    @extend .ptb-lg;
+    @extend .plr-extra;
+    @extend .relative;
+    @for $i from 1 through 5{
+        &:nth-child(#{$i}){
+           background-color: transparentize(black, $i * 0.1);
+        }
+    }
+}
+.skill-name{
+    @extend .relative;
+    @extend .mr-lg;
+    width: 180px;
+    text-align:center;
+    padding: 20px;
+    font-size: 34px;
+    font-weight: bolder;
+    &::before{
+        @extend .absolute;
+        @extend .left;
+        content: "{";
+    }
+    &::after{
+        @extend .absolute;
+        @extend .right;
+        content: "}";
+    }
+}
+.skill-state{
+    @extend .absolute;
+    @extend .top;
+    @extend .right;
+    color: yellow;
+    .fa-star{
+        top: -4px;
+    }
+}
+.skills-intro{
+  background-color: rgb(18,19,37);
+}
+@media screen and (max-width: 760px){
+    .skills{
+        flex-direction: column-reverse;
+        & > div{
+            width: 100%;
+        }
+        .skills-intro{
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+    }
+}
+@media screen and (max-width: 500px){
+    .skill{
+        flex-direction: column;
+    }
+}
+
+
+/* portfolio
+==========================================*/
+.portfolio{
+    min-height: 100%;
+}
+.portfolio-label{
+}
+.portfolio-items{
+    
+}
+.portfolio-item{
+    @include size(310px,220px);
+    @extend .container-clip;
+    @extend .relative;
+    @extend .pointer;
+    @extend .mlr-extra;
+    @extend .mtb-extra;
+    border-radius: 4px;
+    &:hover{
+        .portfolio-item-metas{
+            opacity: 1;
+        }
+        img{
+
+        }
+    }
+    img{
+        width: 100%;
+    }
+}
+.portfolio-item-metas{
+    @extend .absolute;
+    @extend .cover;
+    @extend .top;
+    @extend .left;
+    @extend .container-clip;
+    @extend .flex-column;
+    @extend .center;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    background-color: rgba(0,0,0,0.4);
+}
+.portfolio-item-link{
+    @extend .nudl;
+    color: $lovely-green;
+    border: 1px solid;
+    border-radius: 16px;
+    padding: 4px 30px;
+    &:hover{
+    }
+}
+
+/* motto
+============================*/
+.motto{
+  background: rgb(4, 14, 26) url("../images/dots7.png") fixed;
+  background-size: cover;
+}
+#motto-svg{
+}
+.motto-detail{
+  opacity: 0;
+}
+
+/* contact
+=============================*/
+.contact{
+  background: linear-gradient(rgb(18, 19, 37),rgb(1, 1, 1));
+  background-image: url("../images/bottom.png");
+  background-attachment: fixed;
+  background-size: cover;
+}
+.mail-btn{
+  opacity: 0;
+  box-shadow: 0px 0px 12px 6px rgba(53, 152, 114, 0.4);
+}
+.social-links{
+}
+.social-link{
+    margin: 20px;
+}
+.site-footer{
+  @extend .ptb-lg;
+  @extend .bt-dash;
+  background-color: $dark-night;
+  border-top-color: #444;
+}

@@ -1,0 +1,56 @@
+<div class="skill-panel flex-row cover stretch plr">
+    <div class="flex-3 flex-column skill-detail">
+        <div class="skill-card flex-column stretch">
+            <div class="skill-card-header flex-row center full-row ptb-lg mtb-lg">
+                <i class="fa {{settingCtrl.temps.currentSkillIcon}}"></i>
+                <span class="text-primary center-clock mlr-lg">{{settingCtrl.temps.currentSkill.name}}</span>
+            </div>
+            <div class="btn-group" dropdown is-open="settingCtrl.status.selectingSkillState">
+                <div class="input-group skill-state-input-wrapper mt-lg">
+                    <input type="text" class="form-control" ng-model="settingCtrl.temps.currentSkill.state" ng-disabled="!settingCtrl.temps.currentSkill">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary dropdown-toggle btn-block">skill level ?&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+                    </div>
+                </div>
+                <ul class="dropdown-menu full-row" role="menu">
+                    <li ng-repeat="state in settingCtrl.metas.skillStates" ng-click="settingCtrl.setCurrentSkillState($index,$event)"><a href="" class="nav-item">{{state}}</a></li>
+                </ul>
+            </div>
+            <div class="input-group mtb-lg">
+                <label class="check-component">
+                    <input type="checkbox" id="is-major-skill" class="btn btn-primary skill-major-checkbox" ng-model="settingCtrl.temps.currentSkill.isMajor" ng-disabled="!settingCtrl.temps.currentSkill">
+                    <i class="fa circle-link" ng-class="{'fa-circle-thin': !settingCtrl.temps.currentSkill.isMajor,'fa-check': settingCtrl.temps.currentSkill.isMajor}"></i>
+                </label>
+                <label class="mlr-lg" for="is-major-skill" tooltip="is this your major skill?" tooltip-placement="bottom">major skill?</label>
+            </div>
+            <!-- -->
+            <div class="">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="settingCtrl.temps.skillRelativeToAdd" ng-disabled="!settingCtrl.temps.currentSkill" tooltip="related skill" tooltip-placement="bottom" tooltip-append-to-body="true" placeholder="related skills & tools">
+                    <span class="input-group-btn" ng-click="settingCtrl.addSkillRelative()"><button class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i></button></span>
+                </div>
+                <div class="tags-wrapper flex-row start">
+                    <a class="tag nudl" ng-repeat="skill in settingCtrl.temps.currentSkill.relatives"><span>{{skill}}</span>&nbsp;&nbsp;<i class="fa fa-times remove" ng-click="settingCtrl.removeSkillRelative($index)"></i></a>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="" class="form-control-label">description</label>
+                <textarea class="form-control transparent" ng-model="settingCtrl.temps.currentSkill.description" ng-disabled="!settingCtrl.temps.currentSkill"></textarea>
+           </div> 
+        </div>
+    </div>
+    <aside class="skills-nav flex-1 full-column">
+        <div class="plr mtb-lg">
+            <div class="btn-group full-row" dropdown is-open="settingCtrl.status.selectingSkillToAdd">
+                <button class="btn btn-primary dropdown-toggle btn-block">Add Skill&nbsp;<span class="caret"></span></button>
+                <ul class="dropdown-menu full-row" role="menu">
+                    <li ng-repeat="skill in settingCtrl.metas.skillsToAdd" ng-click="settingCtrl.addSkill($index)"><a href="" class="nav-item"><i class="fa fa {{skill.icon}}"></i>&nbsp;{{skill.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-group-v full-row">
+            <a href="" class="nav-item nudl" ng-repeat="skill in settingCtrl.metas.skillsGotten" ng-click="settingCtrl.setCurrentSkill($index,$event)"><i class="fa fa-fw {{skill.icon}}"></i>&nbsp;&nbsp;{{skill.name}}<i class="pull-right fa fa-trash-o" ng-click="settingCtrl.removeSkill($index,$event)"></i></a>
+        </div>
+    </aside>
+</div>

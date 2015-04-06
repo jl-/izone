@@ -1,0 +1,17 @@
+<div class="cover pt-extra posts-list container-auto-y container-clip-x">
+    <div class="post center-block" ng-repeat="post in blogCtrl.sortedPosts" ng-click="blogCtrl.readMore(post.category,post._id,$event)">
+        <a class="post-title" ui-sref="blog.detail({categoryName:post.category,postId:post._id})">{{post.title}}</a>
+        <div class="post-metas-box plr-lg">
+            <span class="post-date"><i class="fa fa-clock-o mr"></i>{{post.createdAt | date: "fullDate"}}</span>
+            <a class="post-category pointer label label-primary ml-lg" ng-click="blogCtrl.setCurrentCategory(post.cid)"><i class="fa fa-folder-o mr"></i>{{post.category}}</a>
+        </div>
+        <div class="plr-lg pb-lg">
+            <markdown-highlight md="post.content" class="post-content" read-more="true"></markdown-highlight>
+        </div>
+        <div ng-if="post.tags.length > 0">
+            <div class="bg-primary post-tags-wrapper">
+                <span class="mlr post-tag tag" ng-repeat="tag in post.tags">#{{tag}}</span>
+            </div>
+        </div>
+    </div>
+</div>

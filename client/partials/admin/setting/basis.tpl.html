@@ -1,0 +1,66 @@
+<div class="basis-panel cover container-clip">
+    <div class="basis-info-box ptb-lg cover flex-row container-clip-x container-auto-y">
+        <div class="flex-2 flex-column plr-extra nowrap">
+            <div class="relative avatar-block">
+                <img ng-src="{{settingCtrl.profile.avatar}}" alt="" class="img-responsive avatar img-circle">
+                <div class="absolute cover left top flex-column avatar-btn-wrapper circle">
+                    <a href="" class="avatar-btn" ng-click="settingCtrl.status.settingAvatar=true"><i class="fa fa-3x fa-plus-circle"></i></a>
+                </div>
+            </div>
+            <div class="flex-row full-row around mtb-lg" tooltip="gender" tooltip-placement="bottom" tooltip-append-to-body="true">
+                <label class="check-component"><input type="radio" name="gender" value="female" ng-model="settingCtrl.profile.gender"><i class="fa fa-female circle-link"></i></label>
+                <label class="check-component"><input type="radio" name="gender" value="male" ng-model="settingCtrl.profile.gender"><i class="fa fa-male circle-link"></i></label>
+                <label class="check-component"><input type="radio" name="gender" value="private" ng-model="settingCtrl.profile.gender"><i class="fa fa-lock circle-link"></i></label>
+            </div>
+            <input type="text" class="form-control bare-input white" ng-model="settingCtrl.profile.name" placeholder="set your name">
+            <div class="input-group mtb-lg">
+                <input type="text" class="form-control transparent" datepicker-popup="dd-MMMM-yyyy" ng-model="settingCtrl.profile.birth" is-open="settingCtrl.status.settingBirthday" min-date="1940-1-1" max-date="'2015-06-22'" close-text="Close"/>
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-primary" ng-click="settingCtrl.setBirthday($event)" tooltip="set birthdat" tooltip-placement="bottom"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="flex-3 plr-extra">
+            <div class="mtb-lg">
+                <div class="">
+                    <i class="fa fa-quote-left"></i>
+                    <input type="text" class="bare-input" ng-model="settingCtrl.temps.character" tooltip="character" tooltip-placement="bottom" tooltip-append-to-body="true" placeholder="Character">
+                    <i class="fa fa-quote-right"></i>
+                    <span><i class="fa fa-check btn btn-primary" ng-click="settingCtrl.addCharacter()"></i></span>
+                </div>
+                <div class="tags-wrapper">
+                    <a class="tag nudl" ng-repeat="character in settingCtrl.profile.characters"><span>{{character}}</span>&nbsp;&nbsp;<i class="fa fa-times remove" ng-click="settingCtrl.removeCharacter($index)"></i></a>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="" class="input-group-addon bg-primary"><i class="fa fa-map-marker"></i></label>
+                <input type="text" class="form-control transparent white" ng-model="settingCtrl.profile.city" placeholder="Current City" tooltip="current city">
+            </div>
+            <div class="form-group">
+                <label for="">signature</label>
+                <textarea class="form-control transparent" ng-model="settingCtrl.profile.signature"></textarea>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+    <div class="fixed modal-content cover container-clip-x container-auto-y avatar-setting-panel top left scale" ng-class="{active: settingCtrl.status.settingAvatar}">
+        <div class="modal-header container-clip">
+            <div class="pull-left">
+                <input type="file" id="avatar-selector-input">
+                <label for="avatar-selector-input" class="text-muted">select image</label>
+                
+            </div>
+            <div class="flex-row stretch pull-right">
+                <button class="btn btn-bs bg-primary mr-lg" ng-click="settingCtrl.updateAvatar()">ok</button>
+                <button class="btn bg-info btn-bs" ng-click="settingCtrl.status.settingAvatar = false;">cancel</button>
+            </div>
+        </div>
+        <div class="modal-body flex-row container-auto-y container-clip-x">
+            <div class="cropArea" ng-if="settingCtrl.temps.rawAvatar">
+                <img-crop image="settingCtrl.temps.rawAvatar" result-image="settingCtrl.temps.croppedAvatar"></img-crop>
+            </div>
+            <div ng-if="settingCtrl.temps.croppedAvatar" class="mt-lg"><img class="avatar-preview" ng-src="{{settingCtrl.temps.croppedAvatar}}" /></div>
+        </div>
+    </div>
+    <!-- end -->
+</div>

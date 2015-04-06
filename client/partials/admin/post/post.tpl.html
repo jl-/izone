@@ -1,0 +1,54 @@
+<div class="flex-row cover post-fragment">
+    <div class="flex-2 plr-sm full-column post-control-panel" ng-class="{'flex-3': postCtrl.status.previewing}">
+        <!-- categories -->
+        <div class="categories-list-panel full-column container-auto-y">
+            <div class="flex-row around full-column items-start content-start">
+                <div class="book flex-column center" ng-repeat="category in postCtrl.categories" ng-click="postCtrl.setCategory($index)">
+                    <input type="text" ng-model="category.name" class="bare-input text-center" ng-disabled="!postCtrl.isCategoryRenaming($index)"/>
+                    <span>{{category.posts.length}}&nbsp;&nbsp;posts</span>
+                    <a class="action fa fa-edit" ng-click="postCtrl.renameCategory($index,$event)" tooltip="rename"></a>
+                    <a class="action fa fa-trash-o" ng-click="postCtrl.deleteCategory($index,$event)" tooltip="delete"></a>
+                </div>
+                <div class="book flex-column center">
+                    <input type="text" ng-model="postCtrl.temps.category.toAdd" class="bare-input" ng-if="postCtrl.status.addingCategory" placeholder="category">
+                    <i class="fa fa-2x" ng-class="{'fa-plus': !postCtrl.temps.category.toAdd,'fa-check': postCtrl.temps.category.toAdd}" tooltip="create category" tooltip-placement="bottom" ng-click="postCtrl.createCategory()"></i>
+                </div>
+            </div>
+        </div>
+        <!-- end:categories list -->
+        <!-- posts list -->
+        <div class="posts-list-panel absolute top bottom full container-auto-y" ng-class="{active: postCtrl.status.viewingPosts}">
+            <div class="actionbar absolute top full">
+                <a href="" class="item fa fa-chevron-left" ng-click="postCtrl.status.viewingPosts=false"></a>
+                <a href="" class="item">{{postCtrl.category.name}}</a>
+                <a href="" class="item pull-right nudl" tooltip="create post" tooltip-placement="left" ng-click="postCtrl.createPost()">&nbsp;<i class="fa fa-plus"></i>&nbsp;</a>
+            </div>
+            <div class="nav-group-v body">
+                <div class="nav-item" ng-repeat="post in postCtrl.category.posts" ng-class="{active: postCtrl.isCurrentPost($index)}">
+                    <a href="" ng-click="postCtrl.setPost($index)"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;{{post.title}}</a>
+                    <a href="" class="pull-right fa fa-trash-o" ng-click="postCtrl.deletePost($index,$event)"></a>
+                </div>
+            </div>
+        </div>
+        <!-- end:posts list -->
+        <!-- preview -->
+        <div class="absolute top bottom full preview active" ng-if="postCtrl.status.previewing">
+            <markdown-highlight md="postCtrl.post.content"></markdown-highlight>
+        </div>
+        <!-- end:preview -->
+    </div>
+    <div class="flex-3 flex-column editor-panel full-column">
+        <input type="text" ng-model="postCtrl.post.title" ng-disabled="!postCtrl.post" ng-change="postCtrl.markModified()" class="post-editor-title full-row transparent bare plr-lg ptb-lg bb" placeholder="title">
+        <div class="action actionbar flex-row end full-row">
+            <div class="tags-wrapper flex-row end nowrap flex-1">
+                <a class="tag nudl" ng-repeat="tag in postCtrl.post.tags"><span>{{tag}}</span><i class="fa fa-times remove ml" ng-click="postCtrl.removeTag($index)"></i></a>
+            </div>
+            <div class="action tag-input-wrapper plr">
+                <input type="text" class="bare-input tag-input text-primary" ng-model="postCtrl.temps.post.newTag" placeholder="new tag" ng-if="postCtrl.status.addingTag">
+                <a href="" class="item nudl" ng-click="postCtrl.addTag()" tooltip="add tags" tooltip-placement="left" tooltip-append-to-body="true">&nbsp;&nbsp;<i class="fa" ng-class="{'fa-check': postCtrl.temps.post.newTag,'fa-tag': !postCtrl.temps.post.newTag}"></i>&nbsp;&nbsp;</a>
+            </div>
+            <a href="" class="item nudl" tooltip="insert img" tooltip-placement="left" tooltip-append-to-body="true" ng-click="postCtrl.openImgInsertPanel()"><i class="fa mlr fa-image"></i></a>
+        </div>
+        <textarea class="flex-1 post-editor-content full-row transparent bare plr-lg ptb-lg" ng-disabled="!postCtrl.post" ng-model="postCtrl.post.content" ng-change="postCtrl.markModified()" ng-keydown="postCtrl.tab($event)" placeholder="content"></textarea>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+/*  placeholder utils */
+
+/* flexbox 
+=========================================*/
+%flex{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+}
+%flex-row{
+    @extend %flex;
+    flex-direction: row;
+}
+%flex-column{
+    @extend %flex;
+    flex-direction: column;
+}
+
+
+/*
+================================*/
+%bare{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+
