@@ -881,6 +881,7 @@ body {
     display: block;
     overflow-y: auto; }
   .page-wrapper .about-page .vcard-panel {
+      height: 100%;
     width: 100%; }
   .page-wrapper .about-page .about-details-panel {
     height: auto;
