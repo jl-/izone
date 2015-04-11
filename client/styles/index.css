@@ -292,13 +292,13 @@ pre > code {
 .mr-sm, .mlr-sm {
   margin-right: 3px; }
 
-.pt-sm, .ptb-sm {
+.pt-sm, .ptb-sm, .post .post-tags-wrapper {
   padding-top: 3px; }
 
 .mt-sm, .mtb-sm {
   margin-top: 3px; }
 
-.pb-sm, .ptb-sm {
+.pb-sm, .ptb-sm, .post .post-tags-wrapper {
   padding-bottom: 3px; }
 
 .mb-sm, .mtb-sm, .curly-quotes {
@@ -641,7 +641,7 @@ input.ng-invalid.ng-dirty {
   color: white;
   display: inline;
   background-color: #428bca;
-  padding: 4px;
+  padding: 0 4px;
   margin: 2px 4px;
   line-height: 20px;
   border-radius: 8px;
@@ -881,8 +881,8 @@ body {
     display: block;
     overflow-y: auto; }
   .page-wrapper .about-page .vcard-panel {
-      height: 100%;
-    width: 100%; }
+    width: 100%;
+    height: 100%; }
   .page-wrapper .about-page .about-details-panel {
     height: auto;
     padding: 0; }
@@ -951,10 +951,29 @@ body {
   color: #428bca; }
 .post .post-tags-wrapper {
   border-radius: 0 0 4px 4px; }
+.post p {
+  text-indent: 2em; }
+.post blockquote {
+  color: #999;
+  font-weight: bolder; }
+.post blockquote::before {
+  font-family: Georgia, serif;
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  line-height: 48px;
+  font-size: 50px;
+  opacity: .2;
+  content: '\201C';
+  margin-right: 4px;
+  margin-left: -8px; }
+.post h1, .post h2, .post h3, .post h4, .post h5 {
+  color: #428bca; }
 
 .read-more {
   cursor: pointer;
-  background-color: white;
+  background-color: #428bca;
+  color: white;
   border-radius: 8px;
   display: inline-block;
   visibility: hidden;

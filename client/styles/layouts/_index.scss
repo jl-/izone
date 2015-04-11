@@ -147,16 +147,40 @@ body{
         color: c($color-schema);
     }
     .post-tags-wrapper{
+        @extend .ptb-sm;
         border-radius: 0 0 4px 4px;
     }
     .post-content{
+    }
+    p{
+        text-indent: 2em;
+    }
+    blockquote{
+        &::before{
+            font-family: Georgia, serif;
+            display: inline-block;
+            vertical-align: top;
+            height: 30px;
+            line-height: 48px;
+            font-size: 50px;
+            opacity: .2;
+            content: '\201C';
+            margin-right: 4px;
+            margin-left: -8px;
+        }
+        color: #999;
+        font-weight: bolder;
+    }
+    h1, h2, h3, h4, h5{
+        color: $true-blue;
     }
 }
 .read-more{
     cursor: pointer;
     @extend .plr;
     @extend .ptb;
-    background-color: white;
+    background-color: $true-blue;
+    color: white;
     border-radius: 8px;
     display: inline-block;
     visibility: hidden;
