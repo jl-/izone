@@ -2,4 +2,5 @@
 node_modules/
 client/bower_components/
 .sass-caches/
+.sass-cache/
 .idea/
