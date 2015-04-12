@@ -433,15 +433,15 @@ angular.module('app')
 
 
 
-            scope.readMore = function(categoryName,postId, $event) {
+            scope.readMore = function(post, $event) {
                 $event.preventDefault();
                 $event.stopPropagation();
                 var target = angular.element($event.target);
                 if (angular.element($event.target).hasClass('read-more')) {
                     scope.status.readingPost = true;
                     $state.go('blog.detail',{
-                        categoryName: categoryName,
-                        postId: postId
+                        date: post.date,
+                        hash: post.hash
                     });
                 }
             };
@@ -514,6 +514,8 @@ angular.module('app')
     .controller('BlogDetailController', ['$rootScope','$scope','$stateParams','Post','$location','APP_CONFIG',
         function($rootScope,$scope,$stateParams,Post,$location,APP_CONFIG) {
             var scope = this;
+
+            scope.domain = APP_CONFIG.api.base;
 
             $scope.$parent.$parent.contentCtrl.status.isArchivePanelHidden = true;
 
