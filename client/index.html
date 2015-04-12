@@ -38,10 +38,43 @@
 
 
         <!-- cdn -->
-        <script src="http://7oxizs.com1.z0.glb.clouddn.com/dist/scripts/index_lib.js"></script>
-        <script src="http://7oxizs.com1.z0.glb.clouddn.com/dist/scripts/index_app.js"></script>
+        <!--<script src="http://7oxizs.com1.z0.glb.clouddn.com/dist/scripts/index_lib.js"></script>-->
+        <!--<script src="http://7oxizs.com1.z0.glb.clouddn.com/dist/scripts/index_app.js"></script>-->
         <!-- end cdn -->
 
+        <!-- build:js dist/scripts/index_lib.js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+
+        <script src="bower_components/marked/lib/marked.js"></script>
+        <script src="bower_components/highlightjs/highlight.pack.js"></script>
+        <!-- endbuild -->
+        <!-- build:js dist/scripts/index_app.js -->
+        <script src="scripts/configs/AppConfig.js"></script>
+        <script src="scripts/index.js"></script>
+
+        <script src="scripts/utils/UtilsModule.js"></script>
+        <script src="scripts/utils/NotificationService.js"></script>
+        <script src="scripts/utils/MdhlDirective.js"></script>
+        <script src="scripts/utils/DisqusDirective.js"></script>
+
+        <script src="scripts/resources/ResourceModule.js"></script>
+        <script src="scripts/resources/Profile.js"></script>
+        <script src="scripts/resources/Category.js"></script>
+        <script src="scripts/resources/Post.js"></script>
+        <script src="scripts/resources/Portfolio.js"></script>
+
+        <script src="scripts/content/ContentController.js"></script>
+
+        <script src="scripts/content/blog/BlogController.js"></script>
+        <script src="scripts/content/blog/BlogDetailController.js"></script>
+
+        <script src="scripts/content/about/AboutController.js"></script>
+        <script src="scripts/content/portfolio/PortfolioController.js"></script>
+        <!-- endbuild -->
 
         <!--
         <script src="bower_components/angular/angular.js"></script>
