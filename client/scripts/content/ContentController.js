@@ -6,4 +6,5 @@ angular.module('app')
         scope.toggleArchievePanel = function(isClose,$event){
             scope.status.isArchivePanelHidden = isClose !== undefined ? isClose : ! scope.status.isArchivePanelHidden;
         };
+
     }]);

@@ -41,9 +41,60 @@
         <!-- end mask -->
 
         <!-- cdn -->
-        <script src="http://i-zone.qiniudn.com/dist/scripts/admin_lib.js"></script>
-        <script src="http://i-zone.qiniudn.com/dist/scripts/admin_app.js"></script>
+        <!--<script src="http://i-zone.qiniudn.com/dist/scripts/admin_lib.js"></script>-->
+        <!--<script src="http://i-zone.qiniudn.com/dist/scripts/admin_app.js"></script>-->
         <!-- end cdn -->
+
+        <!-- build:js dist/scripts/admin_lib.js -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+
+        <script src="bower_components/marked/lib/marked.js"></script>
+        <script src="bower_components/highlightjs/highlight.pack.js"></script>
+        <script src="bower_components/ngImgCrop/compile/minified/ng-img-crop.js"></script>
+        <script src="bower_components/plupload/js/plupload.full.min.js"></script>
+
+        <script src="bower_components/ng-modal-provider/ng-modal-provider.js"></script>
+        <script src="bower_components/ng-img-thumb/img-thumb.js"></script>
+
+        <script src="scripts/vendors/qiniu.js"></script>
+        <script src="bower_components/ng-qiniu/ng-qiniu.js"></script>
+        <!-- endbuild -->
+        <!-- build:js dist/scripts/admin_app.js -->
+        <script src="scripts/configs/AppConfig.js"></script>
+        <script src="scripts/admin.js"></script>
+        <script src="scripts/admin/AdminController.js"></script>
+
+        <script src="scripts/utils/UtilsModule.js"></script>
+        <script src="scripts/utils/NotificationService.js"></script>
+        <script src="scripts/utils/MdhlDirective.js"></script>
+        <script src="scripts/utils/Utils.js"></script>
+
+        <script src="scripts/resources/ResourceModule.js"></script>
+        <script src="scripts/resources/Profile.js"></script>
+        <script src="scripts/resources/Category.js"></script>
+        <script src="scripts/resources/Post.js"></script>
+        <script src="scripts/resources/Portfolio.js"></script>
+
+        <script src="scripts/admin/auth/AuthModule.js"></script>
+        <script src="scripts/admin/auth/AUTH_EVENTS.js"></script>
+        <script src="scripts/admin/auth/AuthInterceptor.js"></script>
+        <script src="scripts/admin/auth/AuthService.js"></script>
+        <script src="scripts/admin/auth/AuthController.js"></script>
+
+        <script src="scripts/admin/post/PostController.js"></script>
+        <script src="scripts/admin/post/PostActionController.js"></script>
+
+        <script src="scripts/admin/setting/SettingController.js"></script>
+        <script src="scripts/admin/setting/SettingActionController.js"></script>
+
+        <script src="scripts/admin/portfolio/PortfolioController.js"></script>
+        <script src="scripts/admin/portfolio/PortfolioActionController.js"></script>
+        <!-- endbuild -->
 
         <!--
         <script src="bower_components/angular/angular.js"></script>
@@ -58,13 +109,14 @@
         <script src="bower_components/ngImgCrop/compile/minified/ng-img-crop.js"></script>
         <script src="bower_components/plupload/js/plupload.full.min.js"></script>
 
-
         <script src="bower_components/ng-modal-provider/ng-modal-provider.js"></script>
         <script src="bower_components/ng-img-thumb/img-thumb.js"></script>
 
-
         <script src="scripts/vendors/qiniu.js"></script>
         <script src="bower_components/ng-qiniu/ng-qiniu.js"></script>
+
+
+
 
         <script src="scripts/configs/AppConfig.js"></script>
         <script src="scripts/admin.js"></script>

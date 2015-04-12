@@ -17,7 +17,8 @@ angular.module('app.config', [])
             login: domain + '/session',
             profile: domain + '/profile',
             category: domain + '/categories',
-            post: domain + '/categories/:categoryId/posts',
+            //post: domain + '/categories/:categoryId/posts',
+            post: domain + '/posts',
             avatar: domain + '/profile/avatar',
             portfolio: domain + '/portfolio'
         };
@@ -408,7 +409,8 @@ angular.module('app.resource')
             url: APP_CONFIG.api.post + '/:postId'
         },
         list:{
-            method: 'GET'
+            method: 'GET',
+            isArray: true
         },
         getOne:{
             method: 'GET',
@@ -564,7 +566,7 @@ angular.module('app')
             //////////////////////////////
             scope.createCategory = function() {
                 if (scope.temps.category.toAdd && scope.temps.category.toAdd.length > 0) {
-                    if (scope.categories.some(function(element, index, array) {
+                    if (scope.categories.some(function(element) {
                         return element.name === scope.temps.category.toAdd;
                     })) {
                         return;
@@ -686,7 +688,9 @@ angular.module('app')
             scope.createPost = function() {
                 Post.create({
                     categoryId: scope.category._id
-                }, null, function(post) {
+                }, {
+                    categoryId: scope.category._id
+                }, function(post) {
                     console.log('////// create post//////');
                     console.log(post);
                     scope.category.posts.unshift(post);
@@ -695,7 +699,6 @@ angular.module('app')
             scope.updatePost = function(callback) {
                 if (scope.temps.post.modified) {
                     Post.update({
-                        categoryId: scope.categories[scope.temps.post.cIndex]._id,
                         postId: scope.post._id
                     }, scope.post, function(post) {
                         console.log('///////// update post //////');
@@ -745,9 +748,12 @@ angular.module('app')
                 console.log('////// before delete post ////');
                 console.log(scope);
                 NotificationService.confirm('sure you want to delete this post: ' + scope.category.posts[index].title + ' ?', function() {
+                    console.log(scope.category._id);
                     Post.delete({
-                        categoryId: scope.category._id,
-                        postId: scope.category.posts[index]._id
+                        postId: scope.category.posts[index]._id,
+                        categoryId: scope.category._id
+                    },{
+                        categoryId: scope.category._id
                     },function(post){
                         console.log('///// delete post /////');
                         console.log(post);

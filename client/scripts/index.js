@@ -18,7 +18,12 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.config', 'app.resource'
                                 population: true
                             });
                         }
-                    ]
+                    ],
+                    posts: ['Post',function(Post){
+                        return Post.list({
+                            page: 1
+                        });
+                    }]
                 },
                 templateUrl: 'partials/content/blog/blog.tpl.html',
                 controller: 'BlogController as blogCtrl'
@@ -30,7 +35,8 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.config', 'app.resource'
             })
 
             .state('blog.detail', {
-                url: '/categories/:categoryName/posts/:postId',
+                //url: '/categories/:categoryName/posts/:postId',
+                url: '/articles/:date/:hash',
                 templateUrl: 'partials/content/blog/detail.tpl.html',
                 controller:'BlogDetailController as blogDetailCtrl'
             })

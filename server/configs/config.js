@@ -21,8 +21,13 @@ exports.regexps = {
     password: /^[^$]{6,20}$/
 };
 exports.account = {
-    email: 'foo@bar', // your own email,
+    email: 'foo@bar.com', // your own email,
     password: 'password' // password
+};
+exports.app = {
+    post: {
+        PER_PAGE: 12
+    }
 };
 
 //======[REQUIRED*] config for qiniu
@@ -44,9 +49,9 @@ exports.server.domain = 'http://' + exports.server.address + ':' + exports.serve
 
 
 //======[REQUIRED*] deployment config for vps
-exports.server = {
-    address: '1.1.1.1', // your own vps server ip
-    port: 80
-};
-exports.server.domain = 'http://jlxy.cz'; // your own domain
+//exports.server = {
+//    address: '1.1.1.1', // your own vps server ip
+//    port: 80
+//};
+//exports.server.domain = 'http://jlxy.cz'; // your own domain
 //=========================================

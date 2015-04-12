@@ -5,14 +5,11 @@ var Post = require('../models/post');
 var ERROR = require('../configs/ERROR');
 
 exports.list = function(data, callback) {
-    var options = {};
-    if (data.skip) {
-        options.skip = data.skip;
-    }
-    if (data.limit) {
-        options.limit = data.limit;
-    }
-    var query = Category.find(null, null, options);
+    data = data || {};
+    var conditions = data.conditions || {};
+    var fields = data.fields || {};
+    var opts = data.opts ||{};
+    var query = Category.find(conditions, fields, opts);
     if (data.population) {
         query.populate({
             path: 'posts',
@@ -20,7 +17,8 @@ exports.list = function(data, callback) {
                 sort:{
                     createdAt: -1
                 }
-            }
+            },
+            select: 'title createdAt date hash' + (data.full ? ' content' : '') // data.full => populated with post content
         });
     }
     query.exec(callback);
@@ -29,6 +27,8 @@ exports.list = function(data, callback) {
 exports.create = function(data, callback) {
     var error = {};
     error.status = false;
+
+    data = data || {};
     if (!data.name) {
         error.msg = ERROR.CATEGORY_NAME_REQUIRED;
         return callback(error);
@@ -39,11 +39,13 @@ exports.create = function(data, callback) {
     category.save(callback);
 };
 exports.delete = function(data, callback) {
+    data = data || {};
     Category.findById(data.categoryId, function(err, category) {
         category.remove(callback);
     });
 };
 exports.getOne = function(data, callback) {
+    data = data || {};
     Category.findById(data.categoryId)
         .populate({
             path: 'posts',

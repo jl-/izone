@@ -11,7 +11,8 @@ angular.module('app.resource')
             url: APP_CONFIG.api.post + '/:postId'
         },
         list:{
-            method: 'GET'
+            method: 'GET',
+            isArray: true
         },
         getOne:{
             method: 'GET',

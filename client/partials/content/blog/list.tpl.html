@@ -1,9 +1,10 @@
 <div class="cover pt-extra posts-list container-auto-y container-clip-x">
-    <div class="post center-block" ng-repeat="post in blogCtrl.sortedPosts" ng-click="blogCtrl.readMore(post.category,post._id,$event)">
-        <a class="post-title" ui-sref="blog.detail({categoryName:post.category,postId:post._id})">{{post.title}}</a>
+    <div class="post center-block" ng-repeat="post in blogCtrl.posts.list" ng-click="blogCtrl.readMore(post.category,post._id,$event)">
+        <!--<a class="post-title" ui-sref="blog.detail({categoryName:post.category._id,postId:post._id})">{{post.title}}</a>-->
+        <a class="post-title" ui-sref="blog.detail({date: post.date, hash: post.hash})">{{post.title}}</a>
         <div class="post-metas-box plr-lg">
             <span class="post-date"><i class="fa fa-clock-o mr"></i>{{post.createdAt | date: "fullDate"}}</span>
-            <a class="post-category pointer label label-primary ml-lg" ng-click="blogCtrl.setCurrentCategory(post.cid)"><i class="fa fa-folder-o mr"></i>{{post.category}}</a>
+            <a class="post-category pointer label label-primary ml-lg" ng-click="blogCtrl.setCurrentCategory(post.category)"><i class="fa fa-folder-o mr"></i>{{post.category.name}}</a>
         </div>
         <div class="plr-lg pb-lg">
             <markdown-highlight md="post.content" class="post-content" read-more="true"></markdown-highlight>

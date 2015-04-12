@@ -17,7 +17,8 @@ angular.module('app.config', [])
             login: domain + '/session',
             profile: domain + '/profile',
             category: domain + '/categories',
-            post: domain + '/categories/:categoryId/posts',
+            //post: domain + '/categories/:categoryId/posts',
+            post: domain + '/posts',
             avatar: domain + '/profile/avatar',
             portfolio: domain + '/portfolio'
         };

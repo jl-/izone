@@ -17,7 +17,8 @@ angular.module('app.config', [])
             login: domain + '/session',
             profile: domain + '/profile',
             category: domain + '/categories',
-            post: domain + '/categories/:categoryId/posts',
+            //post: domain + '/categories/:categoryId/posts',
+            post: domain + '/posts',
             avatar: domain + '/profile/avatar',
             portfolio: domain + '/portfolio'
         };
@@ -54,7 +55,12 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.config', 'app.resource'
                                 population: true
                             });
                         }
-                    ]
+                    ],
+                    posts: ['Post',function(Post){
+                        return Post.list({
+                            page: 1
+                        });
+                    }]
                 },
                 templateUrl: 'partials/content/blog/blog.tpl.html',
                 controller: 'BlogController as blogCtrl'
@@ -66,7 +72,8 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'app.config', 'app.resource'
             })
 
             .state('blog.detail', {
-                url: '/categories/:categoryName/posts/:postId',
+                //url: '/categories/:categoryName/posts/:postId',
+                url: '/articles/:date/:hash',
                 templateUrl: 'partials/content/blog/detail.tpl.html',
                 controller:'BlogDetailController as blogDetailCtrl'
             })
@@ -336,7 +343,8 @@ angular.module('app.resource')
             url: APP_CONFIG.api.post + '/:postId'
         },
         list:{
-            method: 'GET'
+            method: 'GET',
+            isArray: true
         },
         getOne:{
             method: 'GET',
@@ -382,12 +390,13 @@ angular.module('app')
         scope.toggleArchievePanel = function(isClose,$event){
             scope.status.isArchivePanelHidden = isClose !== undefined ? isClose : ! scope.status.isArchivePanelHidden;
         };
+
     }]);
 ;
 'use strict';
 angular.module('app')
-    .controller('BlogController', ['$rootScope','$scope', '$stateParams', '$state','categories', 'APP_CONFIG',
-        function($rootScope,$scope, $stateParams, $state,categories,APP_CONFIG) {
+    .controller('BlogController', ['$rootScope','$scope', '$stateParams', '$state','categories', 'posts', 'APP_CONFIG',
+        function($rootScope,$scope, $stateParams, $state,categories,posts,APP_CONFIG) {
             var scope = this;
             scope.categories = categories;
             console.log('////////// blog controller ///////////');
@@ -399,6 +408,13 @@ angular.module('app')
             scope.changePostsViewType = function(type) {
                 scope.status.postsViewType = type;
             };
+
+
+            scope.posts = {};
+            scope.posts.pages = [];
+            scope.posts.pages[0] = posts;
+            scope.posts.list = [];
+
             function getCategory(id){
                 var category = null;
                 for(var i = scope.categories.length - 1; i>=0 ; i--){
@@ -409,8 +425,8 @@ angular.module('app')
                 }
                 return category;
             }
-            scope.setCurrentCategory = function(id) {
-                scope.currentCategory = getCategory(id);
+            scope.setCurrentCategory = function(category) {
+                scope.currentCategory = getCategory(category._id);
                 scope.status.viewingPosts = true;
                 console.log(scope.currentCategory);
             };
@@ -456,7 +472,7 @@ angular.module('app')
             scope.sortPosts = function(){
                 var len = scope.categories.length - 1;
                 for( ; len >=0 ; len--){
-                    scope.sortedPosts = scope.sortedPosts.concat( scope.categories[len].posts.map(function(value,index,array){
+                    scope.sortedPosts = scope.sortedPosts.concat( scope.categories[len].posts.map(function(value){
                         value.category = scope.categories[len].name;
                         value.cid = scope.categories[len]._id;
                         return value;
@@ -469,6 +485,18 @@ angular.module('app')
             };
             scope.categories.$promise.then(function() {
                 scope.sortPosts();
+            });
+
+
+            scope.goToPage = function(page){
+
+            };
+            scope.makeHref = function(post) {
+                console.log(post);
+            };
+
+            scope.posts.pages[0].$promise.then(function(posts){
+                scope.posts.list = posts;
             });
             $scope.$on('viewPost',function(data){
             });
@@ -483,30 +511,18 @@ angular.module('app')
 ;
 'use strict';
 angular.module('app')
-    .controller('BlogDetailController', ['$rootScope','$scope','$stateParams','$location','APP_CONFIG',
-        function($rootScope,$scope,$stateParams,$location,APP_CONFIG) {
+    .controller('BlogDetailController', ['$rootScope','$scope','$stateParams','Post','$location','APP_CONFIG',
+        function($rootScope,$scope,$stateParams,Post,$location,APP_CONFIG) {
             var scope = this;
-            scope.domain = APP_CONFIG.api.base;
-            scope.categories = $scope.$parent.blogCtrl.categories;
+
             $scope.$parent.$parent.contentCtrl.status.isArchivePanelHidden = true;
-            scope.categories.$promise.then(function(){
-                var len = scope.categories.length - 1;
-                var category = null;
-                for( ; len >=0 ; len--){
-                    if(scope.categories[len].name === $stateParams.categoryName){
-                        scope.category = scope.categories[len];
-                        break;
-                    }
-                }
-                len = scope.category.posts.length - 1;
-                for( ; len>=0 ; len--){
-                    if(scope.category.posts[len]._id === $stateParams.postId){
-                        scope.post = scope.category.posts[len];
-                        $rootScope.title = scope.post.title;
-                        break;
-                    }
-                }
+
+            Post.list($stateParams,function(post){
+                console.log(post);
+                scope.post = post && post[0];
+                $rootScope.title = scope.post.title;
             });
+
             $scope.$on('$viewContentLoaded', function(event, viewConfig) {
             });
         }

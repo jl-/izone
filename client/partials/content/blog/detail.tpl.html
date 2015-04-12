@@ -4,7 +4,7 @@
         <h2 class="post-title">{{blogDetailCtrl.post.title}}</h2>
         <div class="post-metas-box plr-lg">
             <span class="post-date"><i class="fa fa-clock-o mr"></i>{{blogDetailCtrl.post.createdAt | date: "fullDate"}}</span>
-            <span class="post-category">{{blogDetailCtrl.post.category}}</span>
+            <span class="post-category">{{blogDetailCtrl.post.category.name}}</span>
         </div>
         <div class="plr ptb">
             <markdown-highlight md="blogDetailCtrl.post.content" class="post-content" read-more="false"></markdown-highlight>

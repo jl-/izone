@@ -14,7 +14,6 @@ router.param('postId',function(req,res,next,postId){
 });
 
 
-// qiniu uptoken
 router.route('/uptoken')
     .get(function(req,res){
         var policy = {};
@@ -23,18 +22,35 @@ router.route('/uptoken')
         });
     });
 
-
 router.route('/')
     .get(function(req, res) {
-        req.query.categoryId = req.categoryId;
-        Category.getOne(req.query,function(err,category){
-            return category ? res.status(200).send(category) : res.status(404).send(err || {});
+        var data = {};
+        data.conditions = {};
+        data.fields = {};
+        data.opts = {};
+        data.population = true;
+
+        data.opts.limit = req.query.limit || config.app.post.PER_PAGE;
+        if(req.query.page){
+            data.opts.skip = (req.query.page - 1) * config.app.post.PER_PAGE;
+        }
+
+        // TODO: support search
+        var queryFields = Object.keys(req.query || {});
+        queryFields.forEach(function(field){
+            if(field !== 'page' && field !== 'limit')
+            data.conditions[field] = req.query[field];
+        });
+
+        console.log(data);
+
+        Post.find(data,function(err,result){
+            return res.status(200).send(result);
         });
     })
     .post(jwt({
         secret: config.auth.secretToken
     }), function(req, res) {
-        req.body.categoryId = req.categoryId;
         console.log(req.body);
         Post.create(req.body,function(err,post){
             return post ? res.status(201).send(post) : res.status(400).send(err || {});
@@ -54,17 +70,14 @@ router.route('/:postId')
         secret: config.auth.secretToken
     }),function(req,res){
         var data = {
-            categoryId: req.categoryId,
+            categoryId: req.body.categoryId || req.query.categoryId,
             postId: req.postId
         };
+        console.log(data);
        Post.delete(data,function(err,post){
             return post ? res.status(200).send(post) : res.status(400).send(err || {});
        }); 
     });
 
-router.route('/:postId/view')
-    .put(function(req,res){
-
-    });
 
 module.exports = router;

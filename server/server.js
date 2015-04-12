@@ -39,7 +39,7 @@ app.use('/statics',express.static(__dirname + '/statics'));
 app.use('/session',router.session);
 app.use('/profile',router.profile);
 app.use('/categories',router.category);
-app.use('/categories/:categoryId/posts',router.post);
+app.use('/posts', router.post);
 app.use('/portfolio',router.portfolio);
 app.use('/qiniu',router.qiniu);
 
