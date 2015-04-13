@@ -38,7 +38,8 @@
         <!-- end:preview -->
     </div>
     <div class="flex-3 flex-column editor-panel full-column">
-        <input type="text" ng-model="postCtrl.post.title" ng-disabled="!postCtrl.post" ng-change="postCtrl.markModified()" class="post-editor-title full-row transparent bare plr-lg ptb-lg bb" placeholder="title">
+        <input type="text" ng-model="postCtrl.post.title" ng-disabled="!postCtrl.post" ng-change="postCtrl.markModified()" class="post-editor-title full-row transparent bare plr-lg ptb bb" placeholder="title">
+        <input type="text" ng-model="postCtrl.post.hash" ng-disabled="!postCtrl.post" ng-change="postCtrl.markModified()" class="post-editor-hash transparent full-row bare plr-lg ptb" placeholder="hash">
         <div class="action actionbar flex-row end full-row">
             <div class="tags-wrapper flex-row end nowrap flex-1">
                 <a class="tag nudl" ng-repeat="tag in postCtrl.post.tags"><span>{{tag}}</span><i class="fa fa-times remove ml" ng-click="postCtrl.removeTag($index)"></i></a>

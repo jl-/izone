@@ -87,7 +87,7 @@ exports.update = function(data, callback) {
         post.title = data.title;
         post.content = data.content;
         post.tags = data.tags || [];
-        post.hash = data.title.replace(/ /g,'-');
+        post.hash = (data.hash || data.title).replace(/ /g,'-');
         post.save(callback);
     });
 };
